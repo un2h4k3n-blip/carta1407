@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Ti ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(180deg,#ffd9e5,#ffc4d5);
+}
+
+.background{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.content{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+/* SOBRE */
+
+.envelope{
+    width:180px;
+    height:120px;
+    position:relative;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.envelope:hover{
+    transform:scale(1.05);
+}
+
+.body{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.flap{
+    position:absolute;
+    width:0;
+    height:0;
+    border-left:90px solid transparent;
+    border-right:90px solid transparent;
+    border-top:65px solid #f8d4df;
+    transform-origin:top;
+    transition:.6s;
+    z-index:2;
+}
+
+.seal{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+    z-index:3;
+}
+
+/* CONTADOR */
+
+.timer{
+    margin-top:40px;
+    color:#c95b78;
+    font-size:22px;
+    text-align:center;
+    font-weight:bold;
+    padding:0 20px;
+}
+
+/* NUBES */
+
+.cloud{
+    position:absolute;
+    background:white;
+    border-radius:50px;
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    background:white;
+    border-radius:50%;
+}
+
+.cloud::before{
+    width:45px;
+    height:45px;
+    top:-18px;
+    left:18px;
+}
+
+.cloud::after{
+    width:60px;
+    height:60px;
+    top:-30px;
+    left:45px;
+}
+
+.c1{
+    width:140px;
+    height:45px;
+    left:-15px;
+    top:30px;
+}
+
+.c2{
+    width:170px;
+    height:50px;
+    right:-20px;
+    bottom:30px;
+}
+
+.c3{
+    width:170px;
+    height:50px;
+    left:40px;
+    bottom:-10px;
+}
+
+/* CORAZONES */
+
+.heart{
+    position:absolute;
+    color:#ff5c89;
+    animation:float linear forwards;
+}
+
+@keyframes float{
+
+from{
+transform:translateY(110vh);
+opacity:0;
+}
+
+20%{
+opacity:1;
+}
+
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.45);
+    padding:20px;
+    z-index:9999;
+    
+}
+.envelope{
+    z-index:1;
+}
+.popup-content{
+    width:90%;
+    max-width:500px;
+    max-height:80vh;
+    overflow:auto;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+}
+
+.popup-content h2{
+    color:#ff5c89;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.popup-content p{
+    line-height:1.8;
+    text-align:justify;
+}
+
+.popup-content button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#ff5c89;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+.envelope{
+width:150px;
+height:100px;
+}
+
+.flap{
+border-left:75px solid transparent;
+border-right:75px solid transparent;
+border-top:55px solid #f8d4df;
+}
+
+.seal{
+font-size:40px;
+}
+
+.timer{
+font-size:18px;
+margin-top:30px;
+}
+
+.popup-content{
+width:95%;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="background">
+
+<div class="cloud c1"></div>
+<div class="cloud c2"></div>
+<div class="cloud c3"></div>
+
+<div id="hearts"></div>
+
+<div class="content">
+
+<div class="envelope" onclick="openLetter()">
+
+<div class="flap"></div>
+
+<div class="body"></div>
+
+<div class="seal" id="seal">
+❤️
+</div>
+
+</div>
+
+<div class="timer">
+
+<p id="countdown"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+
+<div class="popup-content">
+
+<h2>💌 Para Ti</h2>
+
+<p>
+
+<!-- EDITA AQUÍ TU CARTA -->
+
+Ya son 8 meses, mailov...
+
+"Un dia como hoy, hace 8 meses fue cuando te pedi que seas mi novia, no fue la pedida mas bonita, ni la mas trabajada, pero te prometo que fue de todo corazón, hoy, siendo 14 de julio, no hago mas que preguntarme, ¿que hice para merecer tu amor? para seguir haciendolo todos los dias, asi nos amariamos por siempre, desde el primer dia que te conoci me di cuenta de algo, eres unica, tu forma de reir, tus ojos, tu sonrisa, que eres tú, todo eso te hace ser perfecta y unica, en lo que va del mes no nos hemos visto, y no quiero esperar hasta agosto, pero aun asi, por ti esperaria milenios, por tus abrazos, tus besos, o las risas juntos.
+Dafne, nunca me cansare de decirte lo mucho que te amo, y aunque tal vez no se mucho como demostrarlo, quiero que con esta carta lo sepas. Nunca, pero NUNCA, dejare de amarte, pase lo que pase, como te dije hace tiempo, te pido que me permitas estar contigo hasta que seamos polvo de estrellas, y te prometo esforzarme el 200% con tal de hacerte feliz, de ver esa hermosa sonrisa que tanto me encanta, Creo que ya me estoy excediendo con el contenido de esta carta, y aunque quisiera decirte mas cosas, no me daria el espacio, Te amo Dafne, gracias por estos 8 meses"
+
+Te amo muchísimo ❤️
+
+</p>
+
+<button onclick="closeLetter()">
+
+Cerrar
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+// =========================================
+// CAMBIA AQUÍ LA FECHA DE APERTURA
+// Año, Mes (0=Enero), Día, Hora, Minuto
+// Julio = 6
+// =========================================
+const targetDate = new Date(2026, 5, 14, 0, 0, 0);
+
+// =========================================
+// CONTADOR
+// =========================================
+function updateCountdown(){
+
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if(diff <= 0){
+
+        document.getElementById("countdown").innerHTML =
+        "💌 ¡Tu carta ya está disponible!";
+
+        document.getElementById("seal").innerHTML="❤️";
+
+        return;
+    }
+
+    const dias = Math.floor(diff / (1000*60*60*24));
+    const horas = Math.floor((diff / (1000*60*60)) % 24);
+    const minutos = Math.floor((diff / (1000*60)) % 60);
+    const segundos = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").innerHTML =
+    `Nueva carta en<br><br>${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+
+// =========================================
+// CORAZONES
+// =========================================
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"%";
+    heart.style.fontSize=(15+Math.random()*20)+"px";
+    heart.style.animationDuration=(4+Math.random()*5)+"s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+
+}
+
+setInterval(createHeart,350);
+
+
+// =========================================
+// ABRIR CARTA
+// =========================================
+function openLetter(){
+
+    if(new Date() < targetDate){
+
+        alert("🔒 Esta carta estará disponible el 14 de julio ❤️");
+
+        return;
+
+    }
+
+    document.querySelector(".flap").style.transform =
+    "rotateX(180deg)";
+
+    setTimeout(()=>{
+
+        document.getElementById("popup").style.display="flex";
+
+    },600);
+
+}
+
+
+// =========================================
+// CERRAR CARTA
+// =========================================
+function closeLetter(){
+
+    document.getElementById("popup").style.display="none";
+
+    document.querySelector(".flap").style.transform =
+    "rotateX(0deg)";
+
+}
+
+</script>
+
+</body>
+
+</html>
